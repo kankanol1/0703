@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-image: url(01.jpg);
+        }
+        #box1{
+            width:450px;
+            height:300px;
+            background: #ffccdd;
+            border:5px solid white;
+            position:absolute;/*设置宽高必须加定位*/
+            border-radius: 10px;
+
+        }
+        p{
+            margin:20px;
+        }
+        #box2{
+
+            font-size: 15px;
+            width:150px;
+            height:100px;
+            background: rgba(35,36,245,0.9);
+            border:1px solid white;
+            position:absolute;
+            border-radius: 10px;
+            display:none;
+            position: absolute;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="box1">
+    <p>    大疆以“The Future of Possible（未来无所不能）”为主旨理念，致力于成为全球飞行影像系
+        统先驱。2006 年创立至今，全球员工人数超过 12,000 人，客户遍布全球百余个国家和地区。
+        技术<a href="#" style="font-weight:bold;"><strong id="word">创新</strong></a>是大疆的立足之本。从飞行控制系统起家，大疆凭借稳定高效的消费级和专业级的
+        航拍飞行平台为人熟知，并将技术移植到地面增稳设备，实现“天地一体”的拍摄解决方案。
+        十二年间，DJI 大疆创新不断革新技术和产品，开启了全球飞行影像新时代；我们的产品应
+        用在影视、农业、地产、新闻、消防、救援、能源、遥感测绘、野生动物保护等多个领域，
+        重塑了人们的生产和生活方式。</p>
+    <div id="box2">创新是第一生产力，创新是第一生产力，创新是第一生产力。</div>
+</div>
+
+<script>
+    var oDiv = document.getElementById("box1");
+    var boxTop = oDiv.getBoundingClientRect().top;
+    var boxLeft = oDiv.getBoundingClientRect().left;
+    function changePosition() {
+
+
+        //找到元素宽高
+        var boxH = oDiv.offsetHeight;
+        var boxW = oDiv.offsetWidth;
+
+
+        //找到窗口宽高
+        var cH = document.documentElement.clientHeight;
+        var cW = document.documentElement.clientWidth;
+
+        //均值
+        var mH = (cH - boxH) / 2;
+        var mW = (cW - boxW) / 2;
+
+        //console.log(mH, mW);
+        oDiv.style.left = mW + "px";
+        oDiv.style.bottom = mH + "px";
+    }
+    changePosition();
+
+    var oA = document.getElementById("word");
+    console.log(oA.getBoundingClientRect());
+
+    //var aTop = oA.getBoundingClientRect().top;
+    //var aLeft = oA.getBoundingClientRect().left;
+
+    var aTop = oA.offsetTop;
+    var aLeft = oA.offsetLeft;
+
+    console.log(aLeft,aTop);
+    console.log(boxLeft,boxTop);
+
+    var oldDate,
+        newDate;
+    var oBox2 = document.getElementById("box2");
+
+    oA.onmouseover = function(){
+        oldDate = new Date();
+        oBox2.style.left = aLeft-20+"px";
+        oBox2.style.top = aTop+20 +"px";
+        oBox2.style.display = "block";
+    };
+    oBox2.onmouseout = function(){
+        oBox2.style.display = "none";
+    }
+    /*
+    setInterval(function(){
+        oA.onmouseout = function(){
+            newDate = new Date();
+        };
+        console.log(oldDate-newDate);
+        if( newDate-oldDate >100){
+            oBox2.style.display = "none";
+        }
+    },1000/60);
+    */
+
+
+
+
+</script>
+</body>
+</html>

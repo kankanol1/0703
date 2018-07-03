@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            height: 500px;
+            width: 500px;
+            background: pink;
+            position:absolute;
+            border:10px dashed hotpink;
+        }
+        #div2{
+            height: 300px;
+            width: 300px;
+            background: red;
+            border:10px dashed hotpink;
+            position: absolute;
+        }
+        #div3{
+            height: 100px;
+            width: 100px;
+            background: gray;
+            position: absolute;
+            border:10px dashed hotpink;
+            /*
+            border-bottom-color: #513aff;
+            border-top-color: #3cff2b;
+            border-left-color: #513aff;
+            */
+            border-color:#513aff #3cff2b #ff23c6 #ffe7fd;
+            margin-left: 30px;/* left的值表示当前元素外边框到定位父级内边框的距离*/
+            left: 30px;
+         }
+    </style>
+</head>
+<body>
+<div id="div1">
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+</div>
+
+
+
+<script>
+    var oDiv3 = document.getElementById("div3");
+    //以前
+    console.log(getComputedStyle(oDiv3).left);
+
+    //现在
+    //offsetLeft 当前元素的外边框到定位父级的内边框之间的距离
+    console.log(oDiv3.offsetLeft);
+    //offsetParent 找距离最近的定位的祖先元素
+    //无定位属性，直接找到body
+    console.log(oDiv3.offsetParent);
+</script>
+</body>
+</html>

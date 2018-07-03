@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="list">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
+<script>
+
+    var oUl = document.getElementById("list");
+    var oLi = oUl.children;//父级下的所有元素节点
+    //console.log(oLi);
+    oLi[0].style.background = "red";
+
+    //找父级
+    console.log(oLi[0].parentNode.parentNode.parentNode.parentNode);
+
+
+    //找兄弟
+
+    //oLi[0].nextElementSibing.style.background = "blue";//nextElementSibing
+    //oLi[3].previousElementSibling.style.background = "yellow";// previousElementSibing
+
+
+    //找头尾
+    oUl.firstElementChild.style.background = "brown";
+    oUl.lastElementChild.style.background = "brown";
+
+
+    /*
+    JS:
+        ECMAScript 核心解析器
+        DOM：document object model
+        ===》库 jquery JS Query   === > 对jsDOM进行了封装
+        节点关系：
+            父子节点 parentNode
+            兄弟节点
+            祖先节点
+            子孙节点
+        节点类型：
+            nodeType  返回数字
+            childNodes 所有元素的子节点
+            类数组 ===>取值 ele.childNodes[0]
+        文本节点：3
+        注释节点：8
+
+        文件节点：9
+
+
+        属性节点：2  类数组
+            nodeName
+            nodeValue:
+
+
+
+
+
+        BOM: 通过window提供的方法操作
+
+    */
+</script>
+</body>
+</html>

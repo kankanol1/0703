@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div  id="div1" class="bd user disabled">
+
+</div>
+
+<script>
+/*
+    //var oDiv = document.getElementById("div1").getElementsByClassName("select");
+    //var oDiv = document.getElementById("div1").getElementsByClassName("select1");
+    var div = document.getElementById("div1");
+    var classNames = div.className.split(/\s+/);
+    console.log(classNames);
+
+    var pos = -1,
+        i,
+        len;
+    for (i=0,len=classNames.length;i<len;i++){
+        if(classNames[i] == "user"){
+            pos = i;
+            break;
+        }
+    }
+    classNames.splice(i,1);
+
+    div.className = classNames.join(" ");
+    console.log(div.className);
+*/
+
+
+    var div = document.getElementById("div1");
+    //div.classList.remove("user");
+    div.classList.add("current");
+    div.classList.toggle("user");
+    console.log(div.className);
+</script>
+</body>
+</html>

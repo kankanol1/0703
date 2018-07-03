@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+    </style>
+    <script>
+        window.onload = function() {
+        }
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+<script>
+
+    //动态js
+    function loadScript(url) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = url;
+        document.body.appendChild(script);
+    }
+    loadScript("client.js");
+
+    //动态css link方法
+    function loadStyles(url) {
+        var link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        link.href = url;
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(link);
+    }
+    loadStyles("client.css");
+
+    //动态css style方法
+    function loadStyles1(css) {
+        var style = document.createElement("style");
+        style.type = "text/css";
+        try{
+            style.appendChild(document.createTextNode(css));
+        } catch (ex){
+            style.styleSheet.cssText = css;
+        }
+        var head = document.getElementsByTagName("head")[0];
+        head.appendChild(style);
+    }
+    loadStyles1("body{background-color:red}");
+
+
+</script>
+</body>
+</html>

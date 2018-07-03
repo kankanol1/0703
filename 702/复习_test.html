@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #list{
+            margin:50px auto;
+            padding: 0;
+            width: 200px;
+            list-style:none;
+
+        }
+        #list li{
+            height:40px;
+            text-align:center;
+            font: 16px/32px  "微软雅黑";
+        }
+        #list .black{
+            background: black;
+            color:#fff;
+        }
+        #list .pink{
+            background: pink;
+            color: #000;
+        }
+        #list .gray{
+            background: gray;
+            color: #fff;
+
+        }
+        #list .red{
+            background: red;
+            color: white;
+        }
+        #list .yellow{
+            background: yellow;
+            color: red;
+        }
+        /*
+
+        行内样式   1000
+        ID选择器   100
+        class选择器 10
+        标签选择器   1
+        !important
+         */
+
+    </style>
+</head>
+<body>
+
+<ul id="list">
+    <li class="black">我是li头</li>
+    <li class="pink">我是li</li>
+    <li class="pink">我是li</li>
+    <li class="pink">我是li</li>
+    <li class="pink">我是li</li>
+    <li class="pink">我是li</li>
+    <li class="pink">我是li</li>
+    <li class="pink">我是li</li>
+    <li class="pink">我是li</li>
+    <li class="pink">我是li</li>
+    <li class="black">我是li尾</li>
+
+</ul>
+
+
+<script>
+    var oList = document.getElementById("list");
+    var aLi = oList.children;
+    var first = oList.firstElementChild;
+    var last = oList.lastElementChild;
+    var len = aLi.length;
+    for(var i=0;i<len;i++){
+        aLi[i].onmouseover = function(){
+            if( this == first || this == last) {
+                this.className = "red";
+            }else{
+                this.className = "yellow";
+                this.nextElementSibling.className = "gray";
+                this.previousElementSibling.className = "gray";
+                first.className = last.className = "black";
+            }
+        };
+        aLi[i].onmouseout = function(){
+            for(var i =0;i<aLi.length;i++){
+                aLi[i].className = "pink";
+            }
+            first.className = last.className = "black";
+        };
+    }
+
+    //alert()阻断程序执行
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 300px;
+            height: 300px;
+            background: #ff23c6;
+            border:10px solid #fcd;
+            margin: 10px;
+            padding:10px;
+
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1"></div>
+
+
+<script>
+
+    /*
+    ele.clientWidth   获取元素的宽 不包括边框宽度
+    ele.clientHeight   获取元素的高 不包括边框高度
+
+    ele.offsetWidth 获取元素宽  包括边框宽度 获取padding
+    ele.offsetHeight 获取元素高  包括边框高度
+    */
+
+    var oDiv = document.getElementById("div1");
+    console.log(oDiv.clientHeight);
+    console.log(oDiv.clientWidth);
+
+    console.log(oDiv.offsetHeight);
+    console.log(oDiv.offsetWidth);
+
+
+    console.log(oDiv.getBoundingClientRect());
+    console.log(getComputedStyle(oDiv).height);
+</script>
+</body>
+</html>

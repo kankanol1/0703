@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="div1"></div>
+<img src="图片/01.jpg" width="300" id="img1">
+
+<script>
+    //创建img元素
+    var img = document.createElement("img");
+    img.setAttribute("id","img1");
+    img.setAttribute("src","图片/01.jpg");
+    img.setAttribute("width",500);
+
+    //创建div元素
+    //var div = document.createElement("div");
+    //div.setAttribute("id","div1");
+    //div.setAttribute("class","div01");
+    //div.setAttribute("onOff","true");
+    //div.appendChild(document.createTextNode("中国"));
+    //document.body.appendChild(div);
+
+
+    //给div设置新的属性
+    var oDiv = document.getElementById("div1");
+    oDiv.setAttribute("onOff","true");
+    //console.log(oDiv.getAttribute("onOff"));
+
+    //console.log(oDiv.id);//元素.属性名称
+    // 获取行内元素自身携带的属性值
+    //自行添加非自身属性无法获取
+    //console.log(oDiv[id]);//
+
+    //getAttribute("key") 获取元素的行内属性
+    // 必须在元素身上 否则失败
+    // ====>必须写在div身上，否则找不到
+
+    //setAttribute("key","value")  //设置标签属性
+    //console.log(oDiv.onOff);//不能获取通过setAttribute自定义的属性
+
+    //删除 属性
+    oDiv.removeAttribute("onOff");
+   // console.log(oDiv.getAttribute("onOff"));
+
+    //console.log(oDiv.getAttribute("id"));
+    //oDiv.index = 1;
+    //console.log(oDiv.getAttribute("index"));
+    //console.log(oDiv.index);
+
+    var oImg = document.getElementById("img1");
+
+
+    //相对路径 颜色值 背景 不可以做判断
+    //src href 可以做判断了
+
+    //console.log(oImg);
+    if (oImg.getAttribute("src") === "图片/01.jpg") {
+        console.log("True");
+    } else {
+        console.log("False");
+    }
+
+
+</script>
+</body>
+</html>

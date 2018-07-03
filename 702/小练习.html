@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width:500px;
+            height: 500px;
+            background: #3cff2b;
+            position: absolute;
+            left: 50px;
+        }
+        #div2{
+            width:300px;
+            height: 300px;
+            background: red;
+            position: absolute;
+            left: 30px;
+        }
+        #div3{
+            width:100px;
+            height:100px;
+            background: #ff23c6;
+            position:absolute;
+            left: 20px;
+         }
+
+    </style>
+</head>
+<body>
+
+<div id="div1">
+    <div id="div2">
+        <div id="div3">
+        </div>
+    </div>
+</div>
+
+<script>
+    var oDiv3 = document.getElementById("div3");
+    var ele = oDiv3;
+    var leftNum =0;// ele.offsetLeft;
+
+    //while 循环非常适合于不知道具体循环多少次的工作
+    while (ele) { //判断ele为不为空 若为空 就不能执行循环
+        leftNum += ele.offsetLeft;
+        ele = ele.offsetParent;
+    }
+console.log(leftNum);
+    /*
+
+    需求：找到div3到屏幕左边的距离
+
+    1、#div3到#div2 的距离
+    2、#div2到#div1的距离
+    3、#div1 到body 的距离
+
+        先找#div3
+        把#div3 存储为一个变量
+     */
+</script>
+</body>
+</html>

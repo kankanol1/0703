@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        a{
+            text-decoration: none;
+        }
+        #div0{
+
+            width:900px;
+            height:600px;
+            background-color:#201164;
+
+            background-image: url(img/bi.png);
+            background-position:center;
+            position:absolute;
+        }
+        #box1{
+            width: 624px;
+            height: 334px;
+            border: 3px solid white;
+            border:5px solid white;
+            position:absolute;/*设置宽高必须加定位*/
+            border-radius: 10px;
+            background: -webkit-linear-gradient(left top, rgba(20,11,64,0.5), rgba(0,0,0,1));
+
+        }
+        .pone{
+            font-size:16px;
+            color: #fff;
+            margin:20px;
+            text-indent: 2em;
+            text-decoration: none;
+        }
+        .p2{
+            color: #fff;
+            padding:5px;
+            text-indent: 2em;
+        }
+        #box2{
+            padding: 10px;
+            font-size: 10px;
+            width:300px;
+            height:145px;
+            background: white;
+            background-image: url("img/05.jpg");
+            border:1px solid white;
+            position:absolute;
+            border-radius: 6px;
+            display:none;
+            position: absolute;
+            cursor: pointer;
+        }
+        #box1 #box2 #a2{
+            font-weight: bold;
+
+        }
+        .p0{
+            font-size:24px;
+            color: rgba(255,229,136,1);
+            text-align: center;
+        }
+        #p2{
+            font-size:15px;
+            color: white;
+
+            text-indent: 2em;
+        }
+        a2{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            display: block;
+        }
+        #title{
+            padding-top:52px;
+            font-size: 36px;
+            color: #fff;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div id="div0">
+    <div id="title">DOM编程艺术</div>
+
+    <div id="box1">
+        <p class="p0"> 强台风“鲇鱼”登录台湾花莲10省市将迎风雨</p>
+        <p class="pone">今年第17号<a href="#" style="font-weight:bold;"><strong id="word">台风</strong></a>
+            “鲇鱼”今天（27日）14时10分前后以强台风级登陆台湾花莲沿海。台湾多地出现狂风暴雨，20县市停班停课。
+        预计“鲇鱼”将于明天凌晨至上午在福建沿海登陆，10省市有强风雨</p>
+        <div id="box2">
+            <p id="p2">台风（Typhoon），指形成于热带或副热带26℃以上广阔海面上的热带气旋。</br>
+            世界气象组织定义：中心持续风速在12级至13级（即32.7-41.4m/s）的热带气旋为台风（typhoon）或飓风（hurricane）...</p>
+            <a id="a2" href="#"><p id="p3">详情>></p></a>
+        </div>
+    </div>
+</div>
+<script>
+
+    var oP3= document.getElementById("p3");
+    console.log(oP3.offsetWidth);
+
+    var oA2 = document.getElementById("a2");
+    var oBox2 = document.getElementById("box2");
+    var oDiv0 = document.getElementById("div0");
+    function changePosition0() {
+
+        //找到元素宽高
+        var boxH = oDiv0.offsetHeight;
+        var boxW = oDiv0.offsetWidth;
+        //找到窗口宽高
+        var cH = document.documentElement.clientHeight;
+        var cW = document.documentElement.clientWidth;
+
+        oDiv0.style.left = (cW - boxW) / 2 + "px";
+        oDiv0.style.bottom = (cH - boxH) / 2 + "px";
+    }
+    changePosition0();
+
+
+    var oDiv = document.getElementById("box1");
+    var boxTop = oDiv.getBoundingClientRect().top;
+    var boxLeft = oDiv.getBoundingClientRect().left;
+    //console.log(boxTop,boxLeft);
+    var oDiv2 = document.getElementById("box1").children[2];
+    //var oDiv2c = oDiv2.children[0];
+    /*********** 封装外部div定位 ***********/
+    function changePosition1() {
+        //找到元素宽高
+
+        //console.log(oDiv2);
+        var boxH = oDiv.offsetHeight;
+        var boxW = oDiv.offsetWidth;
+        console.log(boxH,boxW);
+        //找到窗口宽高
+        var cH = oDiv0.offsetHeight;//document.documentElement.clientHeight;
+        var cW = oDiv0.offsetWidth;//document.documentElement.clientWidth;
+        console.log(cH,cW);
+
+        oDiv.style.left = (cW-boxW) / 2 + "px";
+        oDiv.style.top = (cH-boxH) /2 + "px";
+    }
+    //调用定位
+    changePosition1();
+
+    /************ 定位内部div ********/
+    var oA = document.getElementById("word");
+    var aTop = oA.offsetTop;
+    var aLeft = oA.offsetLeft;
+    var oBox2 = document.getElementById("box2");
+    var oP2 = document.getElementById("p2");
+
+    setInterval(function(){
+        //oBox2.style.display = "none";
+        var oldDate = new Date();
+        oA.onmouseover = function(){
+            oBox2.style.left = aLeft-20+"px";
+            oBox2.style.top = aTop+20 +"px";
+            oBox2.style.display = "block";
+        };
+        oBox2.onmouseover = function(){
+            oBox2.style.display = "black";
+        };
+        oBox2.onmouseout = function(){
+            oBox2.style.display = "none";
+        };
+
+        oA2.onmouseover = function(){
+            oBox2.style.display = "block";
+        };
+        oP2.onmouseover =function(){
+            oBox2.style.display = "block";
+        };
+        oP3.onmouseover = function(){
+            oBox2.style.display = "block";
+        };
+
+    },1000/6);
+
+
+
+</script>
+</body>
+</html>

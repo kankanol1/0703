@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+        a{
+            text-decoration: none;
+        }
+        #div0{
+            width:900px;
+            height:600px;
+            background-color:#201164;
+            background-image: url(img/bi.png);
+            background-position:center;
+            position:absolute;
+        }
+        #box1{
+            width: 624px;
+            height: 334px;
+            border: 3px solid white;
+            border:5px solid white;
+            position:absolute;/*设置宽高必须加定位*/
+            border-radius: 10px;
+
+        }
+        .pone{
+            margin:20px;
+            text-indent: 2em;
+            text-decoration: none;
+        }
+        .p2{
+            padding:5px;
+            text-indent: 2em;
+        }
+        #box2{
+            padding: 10px;
+            font-size: 10px;
+            width:150px;
+            height:100px;
+            background: white;
+            border:1px solid white;
+            position:absolute;
+            border-radius: 10px;
+            display:none;
+            position: absolute;
+            cursor: pointer;
+
+        }
+        #box1 #box2 #a2{
+            font-weight: bold;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="div0">
+<div id="box1">
+    <p class="pone">大疆以“The Future of Possible（未来无所不能）”为主旨理念，致力于成为全球飞行影像系
+        统先驱。2006 年创立至今，全球员工人数超过 12,000 人，客户遍布全球百余个国家和地区。
+        技术<a href="#" style="font-weight:bold;"><strong id="word">创新</strong></a>是
+        大疆的立足之本。从飞行控制系统起家，大疆凭借稳定高效的消费级和专业级的
+        航拍飞行平台为人熟知，并将技术移植到地面增稳设备，实现“天地一体”的拍摄解决方案。
+        十二年间，DJI 大疆创新不断革新技术和产品，开启了全球飞行影像新时代；我们的产品应
+        用在影视、农业、地产、新闻、消防、救援、能源、遥感测绘、野生动物保护等多个领域，
+        重塑了人们的生产和生活方式。</p>
+    <div id="box2">创新一生产力创新是第一生产力创新是第一生产力创新是第一
+        生产力创新是第一生新是第一生产力创新是第一
+        生产力创新是第一生产力创新是第一生产力。
+        <a id="a2" href="#">详情>></a>
+    </div>
+</div>
+</div>
+<script>
+
+
+    var oDiv0 = document.getElementById("div0");
+    function changePosition0() {
+
+        //找到元素宽高
+        var boxH = oDiv0.offsetHeight;
+        var boxW = oDiv0.offsetWidth;
+        //找到窗口宽高
+        var cH = document.documentElement.clientHeight;
+        var cW = document.documentElement.clientWidth;
+
+        oDiv0.style.left = (cW - boxW) / 2 + "px";
+        oDiv0.style.bottom = (cH - boxH) / 2 + "px";
+    }
+    changePosition0();
+
+
+    var oDiv = document.getElementById("box1");
+    var boxTop = oDiv.getBoundingClientRect().top;
+    var boxLeft = oDiv.getBoundingClientRect().left;
+    //console.log(boxTop,boxLeft);
+    var oDiv2 = document.getElementById("box1").children[0];
+    //var oDiv2c = oDiv2.children[0];
+    /*********** 封装外部div定位 ***********/
+    function changePosition1() {
+        //找到元素宽高
+
+        //console.log(oDiv2);
+        var boxH = oDiv2.offsetHeight;
+        var boxW = oDiv2.offsetWidth;
+        console.log(boxH,boxW);
+        //找到窗口宽高
+        var cH = oDiv.offsetHeight;//document.documentElement.clientHeight;
+        var cW = oDiv.offsetWidth;//document.documentElement.clientWidth;
+        console.log(cH,cW);
+
+        oDiv.style.left = (cW-boxW) / 2 + "px";
+        oDiv.style.top = (cH-boxH) /2 + "px";
+    }
+    //调用定位
+    changePosition1();
+
+    /************ 定位内部div ********/
+    var oA = document.getElementById("word");
+    var aTop = oA.offsetTop;
+    var aLeft = oA.offsetLeft;
+    var oBox2 = document.getElementById("box2");
+    var oP2 = document.getElementsByClassName("p2");
+    var oA2 = document.getElementById("a2");
+    setInterval(function(){
+        var oldDate = new Date();
+        oA.onmouseover = function(){
+
+            oBox2.style.left = aLeft-20+"px";
+            oBox2.style.top = aTop+20 +"px";
+            oBox2.style.display = "block";
+        };
+        /*
+        oA.onmouseout = function(){
+            var newDate = new Date();
+            console.log(newDate - oldDate);
+            if (newDate - oldDate>10){
+                oBox2.style.display = "none";
+            }
+        };
+        */
+        oBox2.onmouseout = function(){
+            oBox2.style.display = "none";
+        };
+        oA2.onmouseover = function(){
+            oBox2.style.display = "block";
+        };
+    },1000/60);
+
+
+
+</script>
+</body>
+</html>
